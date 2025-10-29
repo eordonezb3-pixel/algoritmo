@@ -348,3 +348,31 @@ function calcularPromediosParesImpares() {
   alert(resumenDeValores + "\n" + salidaPares + "\n" + salidaImpares);
 }
 calcularPromediosParesImpares();
+
+// Ingresar una frase
+let frase = prompt("Ingresa una frase en minúscula:");
+
+// Convertimos todo a minúsculas primero
+frase = frase.toLowerCase();
+
+let resultado = "";
+let convertir = true; // bandera para saber cuándo poner mayúscula
+
+for (let i = 0; i < frase.length; i++) {
+  if (convertir && frase[i] != " ") {
+    // Primera letra de palabra
+    resultado += frase[i].toUpperCase();
+    convertir = false;
+  } else {
+    resultado += frase[i];
+  }
+
+  // Si hay espacio, la siguiente letra será inicio de palabra
+  if (frase[i] == " ") {
+    convertir = true;
+  }
+}
+
+// Mostrar resultado
+alert("Frase convertida: " + resultado);
+console.log(resultado);
