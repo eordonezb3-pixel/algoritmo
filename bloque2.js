@@ -1,195 +1,798 @@
-//Bloque 2 (versión con Arreglos del bloque1)
+//Bloque 2 (versión con Arreglos del bloque1)//PSEINT
+//1.-SERIE DE FIBONACCI PARA VARIOS TERMINOS
+Proceso Fibonacci_Arreglo
+	Definir n, i, j, k, cantidad Como Entero
+	Escribir "Cuantos valores tendra el arreglo?"
+	Leer cantidad
+	
+	Dimension n_valores[cantidad]
+	
+	// Llenar arreglo
+	Para i = 1 Hasta cantidad Con Paso 1
+		Escribir "Ingresa el valor ", i, ": "
+		Leer n_valores[i]
+	FinPara
+	
+	// Procesar cada valor
+	Para i = 1 Hasta cantidad Con Paso 1
+		n = n_valores[i]
+		Escribir "Fibonacci(", n, "): " Sin Saltar
+		
+		a = 0
+		b = 1
+		
+		Para j = 1 Hasta n Con Paso 1
+			Escribir a, " " Sin Saltar
+			c = a + b
+			a = b
+			b = c
+		FinPara
+		
+		Escribir "" // salto de línea
+	FinPara
+FinProceso
 
-//1. Contar caracteres de varias frases publicitarias
-
-function contarFrases() {
-  let cantidadFrases = parseInt(prompt("¿Cuántas frases quieres ingresar?"));
-  if (isNaN(cantidadFrases) || cantidadFrases <= 0) {
-    alert("Debes ingresar un número válido.");
-    return;
-  }
-  let frases = [];
-  for (let i = 0; i < cantidadFrases; i++) {
-    let texto = prompt("Ingresa la frase " + (i + 1) + ":");
-    frases.push(texto);
-  }
-  for (let i = 0; i < frases.length; i++) {
-    let frase = frases[i];
-    let fraseSinEspacios = frase.replace(/\s+/g, ""); // quitar espacios
-    let cantidad = fraseSinEspacios.length;
-    alert('"' + frase + '" → ' + cantidad + ' caracteres.');
-  }
-}
-contarFrases();
-
-//2. Contar apariciones de una vocal en cada título
-
-function contarVocalesEnTitulos() {
-  let cantidadTitulos = parseInt(prompt("¿Cuántos títulos quieres ingresar?"));
-  if (isNaN(cantidadTitulos) || cantidadTitulos <= 0) {
-    alert("Debes ingresar un número válido.");
-    return;
-  }
-  let titulos = [];
-  // Ingresar títulos
-  for (let i = 0; i < cantidadTitulos; i++) {
-    let texto = prompt("Ingresa el título " + (i + 1) + ":");
-    titulos.push(texto);
-  }
-  // Elegir vocal a contar
-  let vocal = prompt("¿Qué vocal quieres contar? (a, e, i, o, u)");
-  vocal = vocal.toLowerCase();
-  // Contar apariciones en cada título
-  for (let i = 0; i < titulos.length; i++) {
-    let titulo = titulos[i].toLowerCase();
-    let contador = 0;
-    for (let j = 0; j < titulo.length; j++) {
-      if (titulo[j] === vocal) {
-        contador++;
-      }
+//JAVASCRIPT
+//1.-SERIE DE FIBONACCI PARA VARIOS TERMINOS
+function fibonacci() {
+    let cantidad = parseInt(prompt("ingrese la cantidad de valores en el arreglo:"));
+    let n_valores = [];
+    for (let i = 1; i <= cantidad; i++) {
+        n_valores[i] = parseInt(prompt("ingrese el valor " +i+ ":"));
     }
-    alert('"' + titulos[i] + '" → ' + contador + " veces la '" + vocal + "'.");
-  }
+    for (let i = 1;i <= cantidad; i++) {
+        let n = n_valores[i];
+        let a = 0;
+        let b = 1;
+        let resultado = "fibonacci(" + n + "): ";
+        for (let j = 1; j <= n; j++) {
+            resultado += a + " ";
+            let c = a + b;
+            a = b
+            b = c
+        }
+        console.log(resultado);
+    } 
+      
+
 }
-contarVocalesEnTitulos();
+fibonacci();
 
-//3. Invertir los nombres de varios productos
 
-function invertirNombresProductos() {
-  
-    let cantidadProductos = parseInt(prompt("¿Cuántos productos quieres ingresar?"));
-  
-  if (isNaN(cantidadProductos) || cantidadProductos <= 0) {
-    alert("Debes ingresar un número válido y mayor que cero.");
-    return; 
-  }
-  let productos = [];
-  
-  for (let i = 0; i < cantidadProductos; i++) {
-    let nombre = prompt("Ingresa el producto " + (i + 1) + ":");
+//PSEINT
+//2.-DIVISORES DE VARIOS NUMEROS
+Proceso Divisores_Arreglo
+	Definir cantidad, i, j, num Como Entero
+	
+	Escribir "Cuantos numeros tendra el arreglo?"
+	Leer cantidad
+	
+	Dimension numeros[cantidad]
+	
+	// Llenar el arreglo
+	Para i = 1 Hasta cantidad Con Paso 1
+		Escribir "Ingresa el numero ", i, ": "
+		Leer numeros[i]
+	FinPara
+	
+	// Procesar cada numero
+	Para i = 1 Hasta cantidad Con Paso 1
+		num = numeros[i]
+		Escribir num, " ? " Sin Saltar
+		
+		Para j = 1 Hasta num Con Paso 1
+			Si num % j = 0 Entonces
+				Escribir j, " " Sin Saltar
+			FinSi
+		FinPara
+		
+		Escribir "" // Salto de línea
+	FinPara
+	
+FinProceso
+
+//JAVASCRIPT
+//2.-DIVISORES DE VARIOS NUMEROS
+function divisores() {
+    let cantidad = parseInt(prompt("ingrese la cantidad de numeros que estaran en el arreglo: "));
+    let n_valores = [];
+     for (let i = 1; i <= cantidad; i++) {
+        n_valores[i] = parseInt(prompt("ingrese el valor" + i + ":"));
+    }
+    for (let i = 1; i <= cantidad; i++) {
+        let n = n_valores[i];
+        let texto = "divisores de " + n + ": ";
+        for (let j = 1; j <= n; j++) {
+            if (n % j === 0) {
+                texto += j + " ";
+               n_valores.push(j);
+            }
+
+        }
+        console.log(texto);
+    }
+   
+}
+divisores();
+
+//PSEINT
+//3.-SUMA DE LOS DIVISORES DE VARIOS NUMEROS
+Proceso Suma_Divisores_Arreglo
+	Definir cantidad, i, j, num, suma Como Entero
+
+	Escribir "¿Cuántos números tendrá el arreglo?"
+	Leer cantidad
+	
+	Dimension numeros[cantidad]
+
+	// Llenar arreglo
+	Para i = 1 Hasta cantidad Con Paso 1
+		Escribir "Ingresa el número ", i, ": "
+		Leer numeros[i]
+	FinPara
+
+	// Procesar cada número
+	Para i = 1 Hasta cantidad Con Paso 1
+		num = numeros[i]
+		suma = 0
+		
+		Para j = 1 Hasta num Con Paso 1
+			Si num % j = 0 Entonces
+				suma = suma + j
+			FinSi
+		FinPara
+
+		Escribir num, " → ", suma
+	FinPara
+
+FinProceso
+
+//JAVASCRIPT
+//3.-SUMA DE LOS DIVISORES DE VARIOS NUMEROS
+function sumaDivisoresArreglo() {
+    let cantidad = parseInt(prompt("ingrese la cantidad de numeros que estaran en el arreglo: "));
+    let n_valores = [];
+    for (let i = 1; i <= cantidad; i++) {
+        n_valores[i] = parseInt(prompt("ingrese el valor" + i + ":"));
+    }
+    for (let i = 1 ; i <= cantidad; i++) {
+        let n = n_valores[i];
+        let suma = 0;
+        for (let j = 1; j <= n; j++) {
+            if (n % j === 0) {
+                suma+= j;
+                n_valores.push(j);
+            }
+        }
+        console.log(" la suma de los divisores de " + n + " es: " + suma);
+    }
+   
+}
+sumaDivisoresArreglo();
+
+//PSEINT
+//4.-NUMEROS PERFECTOS EN UNA LISTA
+Algoritmo NumerosPerfectosInteractivo
+    Definir n, numero, i, j, suma Como Entero
+    Dimension numeros[100]   // Se crea el arreglo
+
+    Escribir "¿Cuántos números desea ingresar?"
+    Leer n
+
+    // Ingreso de valores
+    Para i <- 1 Hasta n Hacer
+        Escribir "Ingrese el número ", i, ":"
+        Leer numeros[i]
+    FinPara
+
+    // Verificar números perfectos
+    Para i <- 1 Hasta n Hacer
+        numero <- numeros[i]
+        suma <- 0
+
+        Para j <- 1 Hasta numero - 1 Hacer
+            Si numero MOD j = 0 Entonces
+                suma <- suma + j
+            FinSi
+        FinPara
+
+        Si suma = numero Entonces
+            Escribir numero, " ES un número perfecto."
+        Sino
+            Escribir numero, " NO es un número perfecto."
+        FinSi
+    FinPara
+
+FinAlgoritmo
+
+//JAVASCRIPT
+//4.-NUMEROS PERFECTOS EN UNA LISTA
+function numerosPerfectos() {
+    let cantidad = parseInt(prompt("ingrese la cantidad de numeros que estaran en el arreglo: "));
+    let n_valores = [];
     
-    if (nombre === null) {
-        alert("Ingreso cancelado.");
-        return; 
+    for (let i = 0; i < cantidad; i++) {
+        n_valores[i] = parseInt(prompt("ingrese el valor" + (i + 1) + ":"));
+    }
+    
+    for (let i = 0; i < cantidad; i++) {
+        let n = n_valores[i];
+        let suma = 0;
+        
+        for (let j = 1; j < n; j++) {
+            if (n % j === 0) {
+                suma += j;
+            }
+        }
+        
+        if ( suma === n) {
+            console.log(n + " es un numero perfecto.");
+        } else {
+            console.log(n + " no es un numero perfecto.");
+        }
+        
     }
 
-    productos.push(nombre);
-  }
-  for (let i = 0; i < productos.length; i++) {
-    let productoOriginal = productos[i];
-    let invertido = productoOriginal.split('').reverse().join('');
-    alert('"' + productoOriginal + '" → "' + invertido + '"');
-  }
 }
-invertirNombresProductos();
+numerosPerfectos();
 
-//4. Comparar longitudes de nombres de ciudades
 
-/*
-  Función para encontrar la ciudad con el nombre más largo,
-  ingresando los datos separados por comas.
-  Todas las variables están en español.
-*/
-function encontrarCiudadMasLargaPorComas() {
-  
-  // 1. Pedir la lista completa de ciudades en un solo prompt
-  let entradaDelUsuario = prompt("Ingresa las ciudades separadas por comas (ej: Milagro,Guayaquil,Quito):");
-  
-  // 2. Validar si el usuario canceló o no escribió nada
-  // .trim() quita espacios en blanco al inicio y al final
-  if (entradaDelUsuario === null || entradaDelUsuario.trim() === "") {
-    alert("No se ingresaron datos.");
-    return; // Termina la función
-  }
-  
-  // 3. Convertir el texto en un arreglo (array)
-  // .split(',') divide el texto en cada coma
-  // .map(nombre => nombre.trim()) limpia espacios de cada nombre
-  const arregloDeCiudades = entradaDelUsuario.split(',').map(nombre => nombre.trim());
+//PSEINT
+//5.-NUMEROS PRIMOS EN UNA LISTA
+Algoritmo NumerosPrimosEnLista
+    Definir n, i, j, numero, contador Como Entero
+    Dimension numeros[100]
 
-  // 4. Variables para guardar el resultado
-  let nombreMasLargo = ""; 
-  let conteoMaximoDeLetras = 0;  
+    Escribir "¿Cuántos números desea ingresar?"
+    Leer n
 
-  // 5. Recorremos el arreglo de ciudades que acabamos de crear
-  for (const ciudadActual of arregloDeCiudades) {
-    
-    // Comparamos la longitud de la ciudad actual con la máxima
-    if (ciudadActual.length > conteoMaximoDeLetras) {
-        // Si es más larga, la guardamos como la nueva ganadora
-        conteoMaximoDeLetras = ciudadActual.length;
-        nombreMasLargo = ciudadActual;
+    // Ingreso de valores
+    Para i <- 1 Hasta n Hacer
+        Escribir "Ingrese el número ", i, ":"
+        Leer numeros[i]
+    FinPara
+
+    Escribir ""
+    Escribir "Resultados:"
+    Para i <- 1 Hasta n Hacer
+        numero <- numeros[i]
+        contador <- 0
+
+        // Contamos los divisores del número
+        Para j <- 1 Hasta numero Hacer
+            Si numero MOD j = 0 Entonces
+                contador <- contador + 1
+            FinSi
+        FinPara
+
+        // Verificamos si es primo (solo 2 divisores)
+        Si contador = 2 Entonces
+            Escribir numero, " es un número primo."
+        Sino
+            Escribir numero, " no es un número primo."
+        FinSi
+    FinPara
+
+FinAlgoritmo
+
+//JAVASCRIPT
+//5.-NUMEROS PRIMOS EN UNA LISTA
+function numeroPrimos() {
+    let cantidad = parseInt(prompt("ingrese la cantidad de numeros que estaran en el arreglo: "));
+    let n_valores = [];
+
+    for (let i = 0; i < cantidad; i++){
+        n_valores[i] = parseInt(prompt("ingrese el valor" + (i +1 ) + ":"));
     }
-  }
-  
-  // 6. Mostramos el resultado final
-  if (nombreMasLargo === "") {
-    // Esto pasaría si el usuario solo ingresa comas o espacios
-    alert("No se pudo identificar una ciudad válida.");
-  } else {
-    // Usamos el '+' para concatenar, como en tu ejemplo
-    alert("La ciudad con más letras es '" + nombreMasLargo + "' (" + conteoMaximoDeLetras + " letras).");
-  }
+    
+    for (let i = 0; i < cantidad; i++){
+        let n = n_valores[i];
+        let contador = 0;
+
+        for ( let j = 1; j <= n; j++) {
+            if (n % j === 0 ){
+                contador++;
+            }
+        } 
+
+        if (contador === 2){
+            console.log(n + " es un numero primo.");
+        } else {
+            console.log(n + " no es un numero primo.");
+        }
+    }
 }
 
-// Llamamos a la función para que inicie
-encontrarCiudadMasLargaPorComas();
+//JAVASCRIPT
+//5.-RESPUESTA EN ARREGLO
+numeroPrimos()
+function numerosPrimos() {
+    let cantidad = parseInt(prompt("Ingrese la cantidad de números que estarán en el arreglo:"));
+    let numeros = [];
+    let primos = [];         // Aquí guardaremos solo los primos
+    let noPrimos = [];       // Aquí guardaremos los que no son primos
 
-//5. Obtener iniciales de varios cargos profesionales
-
-/*
-  Función para obtener iniciales de cargos profesionales,
-  ingresando los datos separados por comas.
-  (Versión con variables en español)
-*/
-function obtenerInicialesPorComas() {
-  
-  // 1. Pedir la lista completa de cargos en un solo prompt
-  let entradaDelUsuario = prompt("Ingresa los cargos separados por comas (ej: Director General,Jefe de Laboratorio):");
-  
-  // 2. Validar si el usuario canceló o no escribió nada
-  if (entradaDelUsuario === null || entradaDelUsuario.trim() === "") {
-    alert("No se ingresaron datos.");
-    return; // Termina la la función
-  }
-  
-  // 3. Convertir el texto en un arreglo de cargos
-  // .split(',') divide por comas
-  // .map(cargo => cargo.trim()) limpia espacios al inicio/final de cada cargo
-  const arregloDeCargos = entradaDelUsuario.split(',').map(cargo => cargo.trim());
-
-  // 4. Recorrer el arreglo de cargos que acabamos de crear
-  for (const cargoActual of arregloDeCargos) {
-    
-    // 5. Omitir si la entrada está vacía (ej: si el usuario pone "Cargo1,,Cargo2")
-    if (cargoActual === "") {
-        continue; // Salta a la siguiente iteración del bucle
+    // Ingreso de valores
+    for (let i = 0; i < cantidad; i++) {
+        numeros[i] = parseInt(prompt("Ingrese el número " + (i + 1) + ":"));
     }
 
-    // 6. --- Lógica principal para obtener iniciales ---
-    
-    // a. Separar el cargo en palabras usando el espacio
-    // "Jefe de Laboratorio" -> ["Jefe", "de", "Laboratorio"]
-    const arregloDePalabras = cargoActual.split(' ');
-    
-    // b. Obtener la primera letra de cada palabra y ponerla en mayúscula
-    // .map() crea un nuevo arreglo con los resultados
-    const arregloDeIniciales = arregloDePalabras.map(palabra => {
-         // [0] toma la primera letra
-         // .toUpperCase() asegura que "de" se convierta en "D", como en tu ejemplo
-         return palabra[0].toUpperCase(); 
-    });
-    
-    // c. Unir las iniciales con un punto y agregar el punto final
-    // ["J", "D", "L"] -> "J.D.L."
-    const inicialesFormateadas = arregloDeIniciales.join('.') + '.';
-    // --- Fin de la lógica ---
-    
-    // 7. Mostrar el resultado para este cargo usando 'alert'
-    alert('"' + cargoActual + '" → ' + inicialesFormateadas);
-  }
+    // Verificar primos
+    for (let i = 0; i < cantidad; i++) {
+        let n = numeros[i];
+        let contador = 0;
+
+        for (let j = 1; j <= n; j++) {
+            if (n % j === 0) {
+                contador++;
+            }
+        }
+
+        if (contador === 2) {
+            primos.push(n);      // Guardamos en arreglo de primos
+        } else {
+            noPrimos.push(n);    // Guardamos en arreglo de no primos
+        }
+    }
+
+    // Mostrar resultados
+    console.log("Números ingresados: " + numeros.join(", "));
+    console.log("Primos: " + primos.join(", "));
+    console.log("No son primos: " + noPrimos.join(", "));
 }
 
-// 8. Llamar a la función para que inicie
-obtenerInicialesPorComas();
+numerosPrimos();
+
+
+//PSEINT
+//6.-INVERTIR VARIOS NUMEROS
+Algoritmo InvertirNumeros
+    Definir cantidad, i, numero, invertido, residuo Como Entero
+    Dimension numeros[100], invertidos[100]
+	
+    Escribir "Ingrese la cantidad de numeros:"
+    Leer cantidad
+	
+    Para i <- 1 Hasta cantidad Hacer
+        Escribir "Ingrese el numero ", i, ":"
+        Leer numeros[i]
+    FinPara
+	
+    Para i <- 1 Hasta cantidad Hacer
+        numero <- numeros[i]
+        invertido <- 0
+		
+        Mientras numero > 0 Hacer
+            residuo <- numero MOD 10
+            invertido <- invertido * 10 + residuo
+            numero <- TRUNC(numero / 10)   // ? ESTA ES LA LÍNEA CORRECTA
+        FinMientras
+		
+        invertidos[i] <- invertido
+    FinPara
+	
+    Escribir "Arreglo invertido:"
+    Para i <- 1 Hasta cantidad Hacer
+        Escribir invertidos[i]
+    FinPara
+	
+FinAlgoritmo
+
+//JAVASCRIPT
+//6.-INVERTIR VARIOS NUMEROS
+function invertirNumeros() {
+    let cantidad = parseInt(prompt("ingrese la cantidad de numeros que estaran en el arreglo: "));
+    let n_valores = [];
+   
+    for (let i = 0; i < cantidad; i++) {
+        n_valores[i] = parseInt(prompt("ingrese el valor" + (i + 1) + ":"));
+    }
+
+    for (let i = 0; i < cantidad; i++) {
+        let n = n_valores[i];
+        let invertido = 0;
+        
+        while (n > 0) {
+            let digito = n % 10;
+            invertido = invertido * 10 + digito;
+            n = (n - (n % 10)) / 10;
+        }
+        console.log("el numero invertido es: " + invertido);
+    }
+
+}
+invertirNumeros();
+//JAVASCRIPT
+//6.-RESPUESTA EN ARREGLO
+function invertirNumeros() {
+    let cantidad = parseInt(prompt("Ingrese la cantidad de números:"));
+    let numeros = [];
+    let invertidos = [];
+
+    // Ingreso de valores
+    for (let i = 0; i < cantidad; i++) {
+        numeros[i] = parseInt(prompt("Ingrese el número " + (i + 1) + ":"));
+    }
+
+    // Invertir cada número
+    for (let i = 0; i < cantidad; i++) {
+        let n = numeros[i];
+        let invertido = 0;
+
+        while (n > 0) {
+            let residuo = n % 10;
+            invertido = invertido * 10 + residuo;
+            n = parseInt(n / 10);
+        }
+
+        invertidos.push(invertido);
+        console.log(numeros[i] + " → " + invertido);
+    }
+
+    // Mostrar arreglo completo
+    console.log("Arreglo original: " + numeros.join(", "));
+    console.log("Arreglo invertido: " + invertidos.join(", "));
+}
+ invertirNumeros();
+
+ //PSEINT
+ //7.-CONTAR DIGITOS DE VARIOS NUMEROS
+Algoritmo ContarDigitos
+    Definir cantidad, i, numero, contador Como Entero
+    Dimension numeros[100], digitos[100]
+
+    Escribir "Ingrese la cantidad de numeros:"
+    Leer cantidad
+
+    Para i <- 1 Hasta cantidad Hacer
+        Escribir "Ingrese el numero ", i, ":"
+        Leer numeros[i]
+    FinPara
+
+    Para i <- 1 Hasta cantidad Hacer
+        numero <- numeros[i]
+        contador <- 0
+
+        Mientras numero > 0 Hacer
+            numero <- TRUNC(numero / 10)
+            contador <- contador + 1
+        FinMientras
+
+        digitos[i] <- contador
+    FinPara
+
+    Escribir "Cantidad de digitos por numero:"
+    Para i <- 1 Hasta cantidad Hacer
+        Escribir digitos[i]
+    FinPara
+
+FinAlgoritmo
+
+ //JAVASCRIPT
+ //7.-CONTAR DIGITOS DE VARIOS NUMEROS
+ function contarDigito(){
+    let cantidad = parseInt(prompt("ingrese la cantidad de numeros que estaran en el arreglo: "));
+    let n_valores = [];
+
+    for (let i = 0; i < cantidad; i++) {
+        n_valores[i] = parseInt(prompt("ingrese el valor" + (i + 1) + ":"));
+    }
+
+    for (let i = 0; i < cantidad; i++) {
+        let n = n_valores[i];
+        let contador = 0;
+
+        while (n > 0) {
+            n = (n - (n % 10)) / 10;
+            contador++;
+        }
+        console.log("la cantidad de digitos de " + n_valores[i] + " es: " + contador);
+    }
+ }
+contarDigito();
+//JAVASCRIPT
+//7.-RESPUESTA EN ARREGLO
+function contarDigitos() {
+    let cantidad = parseInt(prompt("Ingrese la cantidad de números:"));
+    let numeros = [];
+    let digitos = [];
+
+    for (let i = 0; i < cantidad; i++) {
+        numeros[i] = parseInt(prompt("Ingrese el número " + (i + 1) + ":"));
+    }
+
+    for (let i = 0; i < cantidad; i++) {
+        let n = numeros[i];
+        let contador = 0;
+
+        while (n > 0) {
+            n = parseInt(n / 10);
+            contador++;
+        }
+
+        digitos[i] = contador;
+        console.log(numeros[i] + " → " + contador + " dígitos");
+    }
+
+    console.log("Arreglo de dígitos:", digitos);
+}
+
+contarDigitos();
+
+
+//PSEINT
+//8.-FACTORIAL DE VARIOS NUMEROS
+Algoritmo FactorialNumeros
+    Definir cantidad, i, n, f Como Entero
+    Dimension numeros[100], factoriales[100]
+
+    Escribir "Ingrese la cantidad de numeros:"
+    Leer cantidad
+
+    Para i <- 1 Hasta cantidad Hacer
+        Escribir "Ingrese el numero ", i, ":"
+        Leer numeros[i]
+    FinPara
+
+    Para i <- 1 Hasta cantidad Hacer
+        n <- numeros[i]
+        f <- 1
+
+        Mientras n > 1 Hacer
+            f <- f * n
+            n <- n - 1
+        FinMientras
+
+        factoriales[i] <- f
+    FinPara
+
+    Escribir "Resultados:"
+    Para i <- 1 Hasta cantidad Hacer
+        Escribir numeros[i], "! = ", factoriales[i]
+    FinPara
+
+FinAlgoritmo
+
+//JAVASCRIPT
+//8.-FACTORIAL DE VARIOS NUMEROS
+function factorial(){
+    let cantidad = parseInt(prompt("ingrese la cantidad de numeros que estaran en el arreglo: "));
+    let n_valores = [];
+
+    for (let i = 0; i < cantidad; i++) {
+        n_valores[i] = parseInt(prompt("ingrese el valor" + (i + 1) + ":"));
+    }
+
+    for (let i = 0; i < cantidad; i++) {
+        let n = n_valores[i];
+        let fact = 1;
+
+        for (let j = 1 ; j <= n; j++) {
+            fact = fact * j;
+        }
+        console.log( n + "! = " + fact);
+    }
+}
+factorial();
+//JAVASCRIPT
+//RESPUESTA EN ARREGLO
+function factorialNumeros() {
+    let cantidad = parseInt(prompt("Ingrese la cantidad de números:"));
+    let numeros = [];
+    let factoriales = [];
+
+    for (let i = 0; i < cantidad; i++) {
+        numeros[i] = parseInt(prompt("Ingrese el número " + (i + 1) + ":"));
+    }
+
+    for (let i = 0; i < cantidad; i++) {
+        let n = numeros[i];
+        let f = 1;
+
+        while (n > 1) {
+            f = f * n;
+            n = n - 1;
+        }
+
+        factoriales[i] = f;
+        console.log(numeros[i] + "! = " + f);
+    }
+
+    console.log("Arreglo original:", numeros);
+    console.log("Arreglo factorial:", factoriales);
+}
+
+factorialNumeros();
+
+
+//PSEINT
+//9.-SUMAS SUCESIVAS EN UNA LISTA
+Algoritmo SumasSucesivas
+    Definir cantidad, i, j, veces, suma Como Entero
+    Dimension numeros[100], resultados[100]
+
+    Escribir "Ingrese la cantidad de numeros:"
+    Leer cantidad
+
+    Para i <- 1 Hasta cantidad Hacer
+        Escribir "Ingrese el numero ", i, ":"
+        Leer numeros[i]
+    FinPara
+
+    Escribir "Ingrese cuantas veces se sumara cada numero:"
+    Leer veces
+
+    Para i <- 1 Hasta cantidad Hacer
+        suma <- 0
+
+        Para j <- 1 Hasta veces Hacer
+            suma <- suma + numeros[i]
+        FinPara
+
+        resultados[i] <- suma
+    FinPara
+
+    Escribir "Resultados:"
+    Para i <- 1 Hasta cantidad Hacer
+        Escribir numeros[i], " x ", veces, " = ", resultados[i]
+    FinPara
+
+FinAlgoritmo
+
+//JAVASCRIPT
+//9.-SUMAS SUCESIVAS EN UNA LISTA
+function sumaSucesiva(){
+    let cantidad = parseInt(prompt("ingrese la cantidad de numeros que estaran en el arreglo: "));
+    let n_valores = [];
+    let veces;
+    for (let i = 0; i < cantidad; i++) {
+        n_valores[i] = parseInt(prompt("ingrese el valor" + (i + 1) + ":"));
+    }
+
+    veces = parseInt(prompt("ingrese cuantas veces se sumara cada numero: "));
+
+    for (let i = 0; i < cantidad; i++) {
+        let n = n_valores[i];
+        let suma = 0;
+
+        for (let j = 1; j <= veces; j++) {
+            suma = suma + n;
+        }
+        console.log("la suma sucesiva de " + n + " es:" + suma);
+        
+    }
+}
+sumaSucesiva();
+//JAVASCRIPT
+//9.-RESPUESTA EN ARREGLO
+function sumasSucesivas() {
+    let cantidad = parseInt(prompt("Ingrese la cantidad de números:"));
+    let numeros = [];
+    let resultados = [];
+
+    for (let i = 0; i < cantidad; i++) {
+        numeros[i] = parseInt(prompt("Ingrese el número " + (i + 1) + ":"));
+    }
+
+    let veces = parseInt(prompt("Ingrese cuántas veces se sumará cada número:"));
+
+    for (let i = 0; i < cantidad; i++) {
+        let suma = 0;
+
+        // ←← SOLO ESTO CAMBIÓ
+        for (let j = 1; j <= veces; j++) {
+            suma = suma + numeros[i];
+        }
+
+        resultados[i] = suma;
+        console.log(numeros[i] + " × " + veces + " = " + suma);
+    }
+
+    console.log("Arreglo original:", numeros);
+    console.log("Arreglo resultado:", resultados);
+}
+
+sumasSucesivas();
+
+//PSEINT
+//10.-RESTAS SUCESIVAS EN UNA LISTA
+Proceso RestasSucesivas
+    Definir cantidad, valor_resta, i, contador, temporal Como Entero
+
+    Escribir "Ingrese la cantidad de números:"
+    Leer cantidad
+
+    Dimension numeros[cantidad]
+    Dimension resultados[cantidad]
+
+    Para i <- 1 Hasta cantidad Con Paso 1
+        Escribir "Ingrese el número ", i, ":"
+        Leer numeros[i]
+    FinPara
+
+    Escribir "Ingrese el valor a restar:"
+    Leer valor_resta
+
+    Para i <- 1 Hasta cantidad Con Paso 1
+        temporal <- numeros[i]
+        contador <- 0
+
+        Mientras temporal >= valor_resta
+            temporal <- temporal - valor_resta
+            contador <- contador + 1
+        FinMientras
+
+        resultados[i] <- contador
+        Escribir numeros[i], " → ", contador
+    FinPara
+
+    Escribir "Arreglo original:"
+    Para i <- 1 Hasta cantidad Con Paso 1
+        Escribir numeros[i]
+    FinPara
+
+    Escribir "Arreglo resultado:"
+    Para i <- 1 Hasta cantidad Con Paso 1
+        Escribir resultados[i]
+    FinPara
+
+FinProceso
+
+//JAVASCRIPT
+//10.-RESTAS SUCESIVAS EN UNA LISTA
+function restaSucesiva() {
+    let cantidad = parseInt(prompt("ingrese la cantidad de numeros que estaran en el arreglo: "));
+    let n_valores = [];
+
+    for (let i = 0; i < cantidad; i++) {
+        n_valores[i] = parseInt(prompt("ingrese el valor" + (i + 1) + ":"));
+    }
+
+    let valor = parseInt(prompt("ingrese el valor a restar: "));
+
+    for (let i = 0; i < cantidad; i++) {
+        let n = n_valores[i];
+        let contador = 0;
+
+        while (n >= valor){
+            n = n - valor;
+            contador++;
+        }
+
+        console.log("resultado final de " + n_valores[i] + " es: " + n);
+        console.log("numero de restas realizadas: " + contador);
+    }
+}
+restaSucesiva();
+//JAVASCRIPT
+//10.-RESPUESTA EN ARREGLO
+function restasSucesivas() {
+    let cantidad = parseInt(prompt("Ingrese la cantidad de números:"));
+    let numeros = [];
+    let resultados = [];
+
+    for (let i = 0; i < cantidad; i++) {
+        numeros[i] = parseInt(prompt("Ingrese el número " + (i + 1) + ":"));
+    }
+
+    let valor_resta = parseInt(prompt("Ingrese el valor a restar:"));
+
+    for (let i = 0; i < cantidad; i++) {
+        let contador = 0;
+        let temporal = numeros[i];
+
+        while (temporal >= valor_resta) {
+            temporal = temporal - valor_resta;
+            contador = contador + 1;
+        }
+
+        resultados[i] = contador;
+        console.log(numeros[i] + " → " + contador);
+    }
+
+    console.log("Arreglo original:", numeros);
+    console.log("Arreglo resultado:", resultados);
+}
+
+restasSucesivas();
  
