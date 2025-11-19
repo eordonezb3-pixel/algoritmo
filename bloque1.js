@@ -10,6 +10,8 @@ function contarYSumar(arr) {
     console.log("Cantidad =", cantidad);
     console.log("Suma =", suma);
 }
+let numeros = [2, 5, 10, 3, 15, 1, 20];
+contarYSumar(numeros);
 
 
 
@@ -39,4 +41,5 @@ function validarCedulas(cedulas) {
 }
 let cedulas = ["1104680135", "0926687855", "1234567890"];
 validarCedulas(cedulas);    
+
 
